@@ -6,11 +6,11 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/08 15:42:55 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/08 15:53:51 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME_M	=	fdf # NAME = name of executable
+NAME	=	fdf # NAME = name of executable
 HEADER 	=	fdf.h
 LIBFT 	=	libft/libft.a
 PRINTF	=	printf/printf.a
@@ -20,15 +20,14 @@ RM		=	rm -f # RM = the program to delete files
 # SHELL 	:= /bin/bash # set bash path to include bash commands in recipe
 
 # SRC = .c files
-VPATH	=	./src
+VPATH	=	/src
 
-SRC_M	=	main.c
-
-SRC		=	get_next_line.c
+SRC		=	main.c			\
+			get_next_line.c
 
 # OBJ = .o files
 OBJ_DIR	=	./obj
-OBJ_M	=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o) $(SRC_M:.c=.o))
+OBJ_M	=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o)
 
 # Colors
 P 		= 	\x1b[35m
@@ -71,7 +70,7 @@ fclean: 	clean
 			@$(MAKE) fclean -C libft
 			@$(MAKE) fclean -C printf
 			@echo "$(P)$@ $(W)object files, obj directories, .a and executable"
-			@$(RM) $(NAME_M)
+			@$(RM) $(NAME)
 
 # re forces recompilation of all source files
 re: 		fclean all
