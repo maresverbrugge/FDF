@@ -6,13 +6,14 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/08 14:57:44 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/08 15:42:55 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_M	=	fdf # NAME = name of executable
 HEADER 	=	fdf.h
 LIBFT 	=	libft/libft.a
+PRINTF	=	printf/printf.a
 FLAGS 	=	-Wall -Wextra -Werror -g
 CC		= 	cc  # CC = compliler to be used
 RM		=	rm -f # RM = the program to delete files
@@ -23,7 +24,7 @@ VPATH	=	./src
 
 SRC_M	=	main.c
 
-SRC		=	
+SRC		=	get_next_line.c
 
 # OBJ = .o files
 OBJ_DIR	=	./obj
@@ -37,19 +38,11 @@ G 		= 	\x1b[32m
 R 		= 	\x1b[31m
 W 		= 	\x1b[0m
 
-ifdef WITH_BONUS
-OBJ = $(OBJ_B)
-NAME = $(NAME_B)
-else
-OBJ = $(OBJ_M)
-NAME = $(NAME_M)
-endif
-
 # "all" builds executable, should recompile only the updated source files
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(LIBFT) $(HEADER)
-			@$(CC) $(OBJ) -I $(HEADER) $(LIBFT) -o $@
+$(NAME):	$(OBJ) $(LIBFT) $(PRINTF) $(HEADER)
+			@$(CC) $(OBJ) -I $(HEADER) $(LIBFT) $(PRINTF) -o $@
 			@echo "$(Y)Just made... "
 			@echo "\n$(Y)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(W)\n"
 			@echo "            $(Y)$@ $(G)$@ $(B)$@ $(P)$@ $(R)$@!"
@@ -58,6 +51,10 @@ $(NAME):	$(OBJ) $(LIBFT) $(HEADER)
 $(LIBFT):
 			@echo "$(G)Created $(W)libft"
 			@$(MAKE) -C libft
+
+$(PRINTF):
+			@echo "$(G)Created $(W)printf"
+			@$(MAKE) -C printf
 
 $(OBJ_DIR)/%.o:		%.c
 			@mkdir -p $(OBJ_DIR)
@@ -72,8 +69,9 @@ clean:
 # fclean deletes temporary/object files and executable
 fclean: 	clean
 			@$(MAKE) fclean -C libft
-			@echo "$(P)$@ $(W)object files, obj directory, .a and executable"
-			@$(RM) $(NAME_M) $(NAME_B)
+			@$(MAKE) fclean -C printf
+			@echo "$(P)$@ $(W)object files, obj directories, .a and executable"
+			@$(RM) $(NAME_M)
 
 # re forces recompilation of all source files
 re: 		fclean all
@@ -82,10 +80,8 @@ re: 		fclean all
 			@echo "\n\n$(Y)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(W)\n"
 
 # compile with fsanitize to check for leaks
-fsani:		$(OBJ) $(LIBFT) $(HEADER)
-			@$(CC) -g -fsanitize=address $(OBJ) -I $(HEADER) $(LIBFT) -o $(NAME)
-			@echo "$(Y)Made $(W)$(NAME)with $(R)* ! ! ! fsanitize ! ! ! *"
-			@echo "\n\n$(Y)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(W)\n"
+fsani:
+
 
 .PHONY:		all bonus clean fclean re
 
