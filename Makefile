@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/08 15:53:51 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/08 16:03:47 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,14 @@ RM		=	rm -f # RM = the program to delete files
 # SHELL 	:= /bin/bash # set bash path to include bash commands in recipe
 
 # SRC = .c files
-VPATH	=	/src
+VPATH	=	./src
 
 SRC		=	main.c			\
 			get_next_line.c
 
 # OBJ = .o files
 OBJ_DIR	=	./obj
-OBJ_M	=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o)
+OBJ	=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 # Colors
 P 		= 	\x1b[35m
