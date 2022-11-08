@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/08 14:31:06 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/08 14:57:44 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ norm:		del
 git: 		del
 			git add *
 			git commit -m "Start of the project"
-			git push origin main
+			git push origin master
 
 # "Updatin' my way through life"
 del:		fclean
