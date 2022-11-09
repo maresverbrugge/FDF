@@ -16,8 +16,8 @@ STAPPENPLAN:
 - miniLibX onderzoeken  
 - sin tan cos herhalen  
 - code slayen  
-
-
+  
+  
 - Your program has to display the image in a window.  
 - The management of your window must remain smooth  
 (changing to another window, minimizing, and so forth).  
