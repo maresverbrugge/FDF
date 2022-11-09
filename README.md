@@ -12,9 +12,10 @@
 ![Alt text](fdf.jpeg "not mine")
 
 ## STAPPENPLAN:  
-- sparksession miniLibX doen  
-- miniLibX onderzoeken  
-- sin tan cos herhalen  
+- miniLibX clonen en werkend krijgen  
+- input parsen  
+- miniLibX onderzoeken (sparksessie?)  
+- sin tan cos uitzoeken  
 - code slayen  
   
 ### Opdracht:  

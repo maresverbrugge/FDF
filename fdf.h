@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/09 14:35:58 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/09 17:32:58 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdio.h> // for MLX42
 # include <stdlib.h> // for malloc, free, exit
 # include <unistd.h> // for write, read
+# include <fcntl.h> // for open
 
 // for MLX42
 #define WIDTH 256
@@ -45,5 +46,13 @@ typedef struct s_data
     int ordinate;
     int altitude;
 }	t_data;
+
+typedef struct s_map
+{
+	int rows;
+    int columns;
+}	t_map;
+
+int read_map(int fd, char **map);
 
 #endif

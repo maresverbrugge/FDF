@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/09 12:34:48 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/09 17:13:30 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ HEADER 	=	fdf.h
 LIBFT 	=	libft/libft.a
 PRINTF	=	printf/printf.a
 MLX		=	MLX42/libmlx42.a
+SANI	=	-g -fsanitize=address # $(SANI)
 FLAGS 	=	-Wall -Wextra -Werror -g
 FLAGS_M	=	-I include -lglfw3 -framework Cocoa \
 				-framework OpenGL -framework IOKit
@@ -26,7 +27,7 @@ RM		=	rm -f # RM = the program to delete files
 VPATH	=	./src
 
 SRC		=	main.c			\
-			get_next_line.c
+			read_map.c
 
 # OBJ = .o files
 OBJ_DIR	=	./obj
