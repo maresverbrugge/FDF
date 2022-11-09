@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/09 12:47:18 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/09 14:37:14 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int32_t	main(void)
 {
 	mlx_t	*mlx;
 
-	mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
+	mlx = mlx_init(WIDTH, HEIGHT, "Marès is koning", true);
 	if (!mlx)
 		exit(EXIT_FAILURE);
 	g_img = mlx_new_image(mlx, 128, 128);
