@@ -11,13 +11,13 @@
 
 ![Alt text](fdf.jpeg "not mine")
 
-STAPPENPLAN:  
+## STAPPENPLAN:  
 - sparksession miniLibX doen  
 - miniLibX onderzoeken  
 - sin tan cos herhalen  
 - code slayen  
   
-  
+### Opdracht:  
 - Your program has to display the image in a window.  
 - The management of your window must remain smooth  
 (changing to another window, minimizing, and so forth).  
