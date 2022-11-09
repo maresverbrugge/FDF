@@ -8,6 +8,9 @@
   
      👩🏻‍🎨 👩🏻‍💻 🕸 🏸 🥅 🚧 🏗  
 
+
+![Alt text](fdf.jpeg "not mine")
+
 STAPPENPLAN:  
 - sparksession miniLibX doen  
 - miniLibX onderzoeken  

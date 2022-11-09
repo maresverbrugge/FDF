@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/08 16:03:47 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/09 12:34:48 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ NAME	=	fdf # NAME = name of executable
 HEADER 	=	fdf.h
 LIBFT 	=	libft/libft.a
 PRINTF	=	printf/printf.a
+MLX		=	MLX42/libmlx42.a
 FLAGS 	=	-Wall -Wextra -Werror -g
+FLAGS_M	=	-I include -lglfw3 -framework Cocoa \
+				-framework OpenGL -framework IOKit
 CC		= 	cc  # CC = compliler to be used
 RM		=	rm -f # RM = the program to delete files
 # SHELL 	:= /bin/bash # set bash path to include bash commands in recipe
@@ -40,20 +43,24 @@ W 		= 	\x1b[0m
 # "all" builds executable, should recompile only the updated source files
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(LIBFT) $(PRINTF) $(HEADER)
-			@$(CC) $(OBJ) -I $(HEADER) $(LIBFT) $(PRINTF) -o $@
+$(NAME):	$(OBJ) $(HEADER) $(LIBFT) $(PRINTF) $(MLX)
+			@$(CC) $(OBJ) -I$(HEADER) $(LIBFT) $(PRINTF) $(MLX) $(FLAGS_M) -o$@
 			@echo "$(Y)Just made... "
 			@echo "\n$(Y)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(W)\n"
 			@echo "            $(Y)$@ $(G)$@ $(B)$@ $(P)$@ $(R)$@!"
 			@echo "\n$(Y)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(W)\n"
 
 $(LIBFT):
-			@echo "$(G)Created $(W)libft"
+			@echo "$(G)Created $(W)libft.a"
 			@$(MAKE) -C libft
 
 $(PRINTF):
-			@echo "$(G)Created $(W)printf"
+			@echo "$(G)Created $(W)printf.a"
 			@$(MAKE) -C printf
+
+$(MLX):
+			@echo "$(G)Created $(W)libmlx42.a"
+			@$(MAKE) -C MLX42
 
 $(OBJ_DIR)/%.o:		%.c
 			@mkdir -p $(OBJ_DIR)
@@ -69,6 +76,7 @@ clean:
 fclean: 	clean
 			@$(MAKE) fclean -C libft
 			@$(MAKE) fclean -C printf
+			@$(MAKE) fclean -C MLX42
 			@echo "$(P)$@ $(W)object files, obj directories, .a and executable"
 			@$(RM) $(NAME)
 
@@ -94,7 +102,7 @@ git: 		del
 
 # "Updatin' my way through life"
 del:		fclean
-			$(RM) *.DS_Store ./.DS_Store
+			$(RM) *.DS_Store ./.DS_Store ./printf/.DS_Store
 			$(RM) ./libft/.DS_Store ./libft/libft_src/.DS_Store
 			$(RM) *.out ./libft/libft.a.5OzDFi
 			rm -rf *.dSYM
