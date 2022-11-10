@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/10 09:40:39 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/10 12:54:50 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,75 +47,35 @@
 // 	return (EXIT_SUCCESS);
 // }
 
-int	count_rows(char *str)
+t_data_point	*init_data_point()
 {
-	int		rows;
-	char	**map_split_on_newline;
-
-	map_split_on_newline = ft_split(str, '\n');
-	if (!map_split_on_newline)
-		exit(EXIT_FAILURE);
-	rows = 0;
-	while (map_split_on_newline[rows])
-		rows++;
-	return (rows);
-}
-
-int	count_columns(char *str)
-{
-	int	columns;
-	int	i;
+	t_data_point data_point;
 	
-	columns = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			break ;
-		if (str[i] != ' ')
-			columns++;
-		i++;
-	}
-	return (columns);
+	data_point = malloc(map_data.data_points * sizeof(t_data_points));
 }
 
-void	parse_input(char *str)
+void	array_of_data_points(t_map *map_data)
 {
-	char	**data_points;
+	map_data->data_points = malloc(map_data.data_points * sizeof(t_data_point));
 
-	data_points = ft_split(str, ' ');
-	if (!data_points)
-		exit(EXIT_FAILURE);
-	size_t i = 0;
-	while (data_points[i])
+}
+
+void	fdf(int argc, char **argv)
+{
+	t_map   map_data;
+
+	if (argc > 1)
 	{
-		printf("data_points[%zu] = %s\n", i, data_points[i]);
-		i++;
+		parse_map(argv, &map_data);
+		array_of_structs(map_data);
+		// printf("rows = %d\n", map_data.rows);
+		// printf("column = %d\n", map_data.columns);
+		// printf("data_points = %d\n", map_data.data_points);
 	}
 }
 
-void	parse_map(void)
+int main(int argc, char **argv)
 {
-	int		map_fd;
-	char	*str;
-
-	// map_fd = open("test_maps/pyramide.fdf", O_RDONLY);
-	// map_fd = open("test_maps/elem2.fdf", O_RDONLY);
-	// map_fd = open("test_maps/julia.fdf", O_RDONLY);
-	map_fd = open("test_maps/42.fdf", O_RDONLY);
-	if (!map_fd)
-		exit(EXIT_FAILURE);
-	printf("map_fd = %d\n", map_fd);
-	int ret = read_map(map_fd, &str);
-	printf("ret = %d\n", ret);
-	// printf("%s", str);
-	// parse_input(str);
-	printf ("rows = %d\n", count_rows(str));
-	printf ("column = %d\n", count_columns(str));
-}
-
-int main()
-{
-	parse_map();
+	fdf(argc, argv);
     return (0);
 }

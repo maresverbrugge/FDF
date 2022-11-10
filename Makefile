@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/09 17:13:30 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/10 12:58:43 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ RM		=	rm -f # RM = the program to delete files
 VPATH	=	./src
 
 SRC		=	main.c			\
+			parse_map.c		\
 			read_map.c
+			
 
 # OBJ = .o files
 OBJ_DIR	=	./obj
@@ -98,7 +100,7 @@ norm:		del
 
 git: 		del
 			git add *
-			git commit -m "Start of the project"
+			git commit -m "Input parsing stage, my favorite stage"
 			git push origin master
 
 # "Updatin' my way through life"

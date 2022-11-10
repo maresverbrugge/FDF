@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 15:12:17 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/09 17:09:35 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/10 12:16:01 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*join_str(char *s1, char *s2)
 ** It returns -1 if an error happened.
 */
 
-int	read_map(int fd, char **map)
+int	map_to_str(int fd, char **map)
 {
 	int			result;
 	static char	buf[BUFFER_SIZE + 1];
