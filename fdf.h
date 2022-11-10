@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/10 16:05:45 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/10 16:45:36 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_map
 
 void	parse_map(char **argv, t_map *map_data);
 int     map_to_str(int fd, char **map);
-void	fill_data_points(t_map *map_data);
+void	fill_data_points(t_map *map_data, int map_fd);
+int get_next_line(int fd, char **line);
 
 #endif

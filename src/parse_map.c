@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 12:11:14 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/10 15:59:04 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/10 17:36:39 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,32 @@ int	count_columns(char *str)
 	return (columns);
 }
 
+void	change_str(char *old_str)
+{
+	int i;
+	char *new_str;
+	// int old_len;
+
+    i = 0;
+	new_str = NULL;
+	// old_len = ft_strlen(old_str);
+    while (old_str[i] != '\0')
+    {
+        printf("old_str[i] = %c\n", old_str[i]);
+		// !!!! WERKT NOG NIET FIX DIT AAAH SEG FAULT !!!!
+		if (old_str[i] == '\n')
+		{
+			new_str[i] = ' ';
+			i++;
+		}	
+		else
+			new_str[i] = old_str[i];
+        i++;
+    }
+	// new_str[i] = '\0';
+	printf("new_str = %s", new_str);
+}
+
 void	parse_map(char **argv, t_map *map_data)
 {
 	int		map_fd;
@@ -68,9 +94,9 @@ void	parse_map(char **argv, t_map *map_data)
 	map_fd = open_map(argv);
 	map_to_str(map_fd, &str);
 	// printf("str = \n%s\n", str);
+	change_str(str);
 
 	map_data->map_as_str = str;
-	close(map_fd);
 	map_data->rows = count_rows(str);
 	map_data->columns = count_columns(str);
 	map_data->amount_of_points = map_data->rows * map_data->columns;
@@ -85,5 +111,6 @@ void	parse_map(char **argv, t_map *map_data)
 	printf("map_data->rows = %d\n", map_data->rows);
 	printf("map_data->columns = %d\n", map_data->columns);
 	printf("map_data->amount_of_points = %d\n", map_data->amount_of_points);
-	fill_data_points(map_data);
+	// fill_data_points(map_data, map_fd);
+	close(map_fd);
 }

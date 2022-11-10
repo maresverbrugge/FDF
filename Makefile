@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/10 15:59:31 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/10 17:19:28 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ VPATH	=	./src
 SRC		=	main.c			\
 			parse_map.c		\
 			read_map.c		\
-			fill_data.c
+			fill_data.c		\
+			gnl.c
 			
 
 # OBJ = .o files
@@ -48,7 +49,7 @@ W 		= 	\x1b[0m
 all:		$(NAME)
 
 $(NAME):	$(OBJ) $(HEADER) $(LIBFT) $(PRINTF) $(MLX)
-			@$(CC) $(OBJ) -I$(HEADER) $(LIBFT) $(PRINTF) $(MLX) $(FLAGS_M) -o$@
+			@$(CC) $(OBJ) -I$(HEADER) $(LIBFT) $(PRINTF) $(MLX) $(FLAGS_M) $(SANI) -o$@
 			@echo "$(Y)Just made... "
 			@echo "\n$(Y)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(W)\n"
 			@echo "            $(Y)$@ $(G)$@ $(B)$@ $(P)$@ $(R)$@!"
