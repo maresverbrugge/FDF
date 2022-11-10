@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/10 12:54:50 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/10 15:16:36 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,15 @@
 // 	return (EXIT_SUCCESS);
 // }
 
-t_data_point	*init_data_point()
-{
-	t_data_point data_point;
-	
-	data_point = malloc(map_data.data_points * sizeof(t_data_points));
-}
-
-void	array_of_data_points(t_map *map_data)
-{
-	map_data->data_points = malloc(map_data.data_points * sizeof(t_data_point));
-
-}
-
 void	fdf(int argc, char **argv)
 {
-	t_map   map_data;
+	t_map   	map_data;
+	// t_data_point data_point;
 
 	if (argc > 1)
 	{
 		parse_map(argv, &map_data);
-		array_of_structs(map_data);
+		// free(map_data.data_points);
 		// printf("rows = %d\n", map_data.rows);
 		// printf("column = %d\n", map_data.columns);
 		// printf("data_points = %d\n", map_data.data_points);
@@ -77,5 +65,6 @@ void	fdf(int argc, char **argv)
 int main(int argc, char **argv)
 {
 	fdf(argc, argv);
+	// system("leaks fdf");
     return (0);
 }
