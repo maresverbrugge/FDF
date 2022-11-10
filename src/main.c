@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/09 17:44:50 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/10 09:40:39 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	count_rows(char *str)
 
 	map_split_on_newline = ft_split(str, '\n');
 	if (!map_split_on_newline)
-		exit(1);
+		exit(EXIT_FAILURE);
 	rows = 0;
 	while (map_split_on_newline[rows])
 		rows++;
@@ -72,8 +72,6 @@ int	count_columns(char *str)
 	{
 		if (str[i] == '\n')
 			break ;
-		// printf("str[i] = %c\n", str[i]);
-		// !!!!!!~KLOPT NOG NIET~!!!!!!
 		if (str[i] != ' ')
 			columns++;
 		i++;
@@ -87,7 +85,7 @@ void	parse_input(char *str)
 
 	data_points = ft_split(str, ' ');
 	if (!data_points)
-		exit(1);
+		exit(EXIT_FAILURE);
 	size_t i = 0;
 	while (data_points[i])
 	{
@@ -101,11 +99,12 @@ void	parse_map(void)
 	int		map_fd;
 	char	*str;
 
-	map_fd = open("test_maps/pyramide.fdf", O_RDONLY);
+	// map_fd = open("test_maps/pyramide.fdf", O_RDONLY);
 	// map_fd = open("test_maps/elem2.fdf", O_RDONLY);
 	// map_fd = open("test_maps/julia.fdf", O_RDONLY);
-	// map_fd = open("test_maps/42.fdf", O_RDONLY);
-	
+	map_fd = open("test_maps/42.fdf", O_RDONLY);
+	if (!map_fd)
+		exit(EXIT_FAILURE);
 	printf("map_fd = %d\n", map_fd);
 	int ret = read_map(map_fd, &str);
 	printf("ret = %d\n", ret);
