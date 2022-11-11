@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 12:11:14 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/11 15:44:16 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/11 17:10:28 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ void	parse_map(char **argv, t_map *map_data)
 		perror("Error mallocing data_points");
 		exit(EXIT_FAILURE);
 	}
-	// printf("map_data->rows = %d\n", map_data->rows);
-	// printf("map_data->columns = %d\n", map_data->columns);
-	// printf("map_data->amount_of_points = %d\n", map_data->amount_of_points);
+	printf("map_data->rows = %d\n", map_data->rows);
+	printf("map_data->columns = %d\n", map_data->columns);
+	printf("map_data->amount_of_points = %d\n", map_data->amount_of_points);
 	// printf("map_data->map_as_str = \n%s\n", map_data->map_as_str);
 	remove_newline_str(str);
 	map_data->str_split = ft_split(str, ' ');

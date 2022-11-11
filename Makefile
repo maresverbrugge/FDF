@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/11 15:06:04 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/11 17:19:03 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,7 @@ norm:		del
 
 git: 		del
 			git add *
-			git commit -m "Input parsing stage, my favorite stage"
+			git commit -m "Reading to start drawing things"
 			git push origin master
 
 # "Updatin' my way through life"

@@ -15,7 +15,9 @@
 - miniLibX clonen en werkend krijgen  
 - input parsen  
 - miniLibX onderzoeken (sparksessie?)  
+- raster tekenen  
 - sin tan cos uitzoeken  
+- data punten draaien  
 - code slayen  
   
 ### Opdracht:  
@@ -31,9 +33,7 @@ and quit the program in a clean way.
 - struct met x, y, z  
 - voor elk data punt een struct aanmaken  
 - elk struct in een array zetten  
-- OF: map lezen met GNL  
 - OF: map lezen als string, splitten op spatie  
-https://github.com/lightiverson/fdf/blob/main/src/file_to_str.c  
 - x = hoeveelste "woord" per lijn  
 - y = hoeveelste rij = \n tellen  
 - z = inhoud van nummer  
