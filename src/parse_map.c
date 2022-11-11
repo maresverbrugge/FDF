@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 12:11:14 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/10 17:36:39 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/11 12:24:00 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,30 +60,21 @@ int	count_columns(char *str)
 	return (columns);
 }
 
-void	change_str(char *old_str)
+void	change_str(char *str)
 {
 	int i;
-	char *new_str;
-	// int old_len;
+	int str_len;
 
     i = 0;
-	new_str = NULL;
-	// old_len = ft_strlen(old_str);
-    while (old_str[i] != '\0')
+	// printf("before str = \n%s\n", str);
+	str_len = ft_strlen(str);
+    while (i < str_len)
     {
-        printf("old_str[i] = %c\n", old_str[i]);
-		// !!!! WERKT NOG NIET FIX DIT AAAH SEG FAULT !!!!
-		if (old_str[i] == '\n')
-		{
-			new_str[i] = ' ';
-			i++;
-		}	
-		else
-			new_str[i] = old_str[i];
-        i++;
+		if (str[i] == '\n')
+			str[i] = ' ';
+		i++;
     }
-	// new_str[i] = '\0';
-	printf("new_str = %s", new_str);
+	// printf("after str = \n%s\n", str);
 }
 
 void	parse_map(char **argv, t_map *map_data)
@@ -93,12 +84,10 @@ void	parse_map(char **argv, t_map *map_data)
 
 	map_fd = open_map(argv);
 	map_to_str(map_fd, &str);
-	// printf("str = \n%s\n", str);
-	change_str(str);
-
 	map_data->map_as_str = str;
-	map_data->rows = count_rows(str);
-	map_data->columns = count_columns(str);
+	// printf("str = \n%s\n", str);
+	map_data->rows = count_rows(map_data->map_as_str);
+	map_data->columns = count_columns(map_data->map_as_str);
 	map_data->amount_of_points = map_data->rows * map_data->columns;
 	map_data->data_points
 		= malloc(map_data->amount_of_points * sizeof(t_data_point));
@@ -111,6 +100,14 @@ void	parse_map(char **argv, t_map *map_data)
 	printf("map_data->rows = %d\n", map_data->rows);
 	printf("map_data->columns = %d\n", map_data->columns);
 	printf("map_data->amount_of_points = %d\n", map_data->amount_of_points);
-	// fill_data_points(map_data, map_fd);
+	change_str(str);
+	map_data->str_split = ft_split(str, ' ');
+	int i = 0;
+	while (map_data->str_split[i])
+	{
+		printf("map_data->str_split[%d] = %s\n", i, map_data->str_split[i]);
+		i++;
+	}
+	printf("!!!! map_data->rows = %d\n", map_data->rows);
 	close(map_fd);
 }

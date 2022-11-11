@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 15:58:56 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/10 17:08:29 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/11 11:45:29 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // {
 // 	int x;
 
-	
+
 // 	return (x);
 // }
 

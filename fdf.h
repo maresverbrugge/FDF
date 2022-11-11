@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/10 16:45:36 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/11 12:16:12 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data_point
 typedef struct s_map
 {
 	char *map_as_str;
+    char **str_split;
     int rows;
     int columns;
     int amount_of_points;
