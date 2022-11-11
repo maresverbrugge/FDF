@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 12:11:14 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/11 12:24:00 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/11 15:44:16 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,36 +44,33 @@ int	count_rows(char *str)
 
 int	count_columns(char *str)
 {
-	int	columns;
-	int	i;
+	int		columns;
+	char	**split_on_nl;
+	char	**split_on_space;
 
+	split_on_nl = ft_split(str, '\n');
+	split_on_space = ft_split(split_on_nl[0], ' ');
 	columns = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			break ;
-		if (str[i] != ' ')
-			columns++;
-		i++;
-	}
+	while (split_on_space[columns])
+		columns++;
+	// printf("columns = %d\n", columns);
 	return (columns);
 }
 
-void	change_str(char *str)
+void	remove_newline_str(char *str)
 {
-	int i;
-	int str_len;
+	int	i;
+	int	str_len;
 
-    i = 0;
+	i = 0;
 	// printf("before str = \n%s\n", str);
 	str_len = ft_strlen(str);
-    while (i < str_len)
-    {
+	while (i < str_len)
+	{
 		if (str[i] == '\n')
 			str[i] = ' ';
 		i++;
-    }
+	}
 	// printf("after str = \n%s\n", str);
 }
 
@@ -85,7 +82,6 @@ void	parse_map(char **argv, t_map *map_data)
 	map_fd = open_map(argv);
 	map_to_str(map_fd, &str);
 	map_data->map_as_str = str;
-	// printf("str = \n%s\n", str);
 	map_data->rows = count_rows(map_data->map_as_str);
 	map_data->columns = count_columns(map_data->map_as_str);
 	map_data->amount_of_points = map_data->rows * map_data->columns;
@@ -96,18 +92,21 @@ void	parse_map(char **argv, t_map *map_data)
 		perror("Error mallocing data_points");
 		exit(EXIT_FAILURE);
 	}
-	printf("map_data->map_as_str = \n%s\n", map_data->map_as_str);
-	printf("map_data->rows = %d\n", map_data->rows);
-	printf("map_data->columns = %d\n", map_data->columns);
-	printf("map_data->amount_of_points = %d\n", map_data->amount_of_points);
-	change_str(str);
+	// printf("map_data->rows = %d\n", map_data->rows);
+	// printf("map_data->columns = %d\n", map_data->columns);
+	// printf("map_data->amount_of_points = %d\n", map_data->amount_of_points);
+	// printf("map_data->map_as_str = \n%s\n", map_data->map_as_str);
+	remove_newline_str(str);
 	map_data->str_split = ft_split(str, ' ');
+	map_data->int_array = malloc(map_data->amount_of_points * sizeof(int));
 	int i = 0;
-	while (map_data->str_split[i])
+	while (i < map_data->amount_of_points)
 	{
-		printf("map_data->str_split[%d] = %s\n", i, map_data->str_split[i]);
+		// printf("map_data->str_split[%d] = %s\n", i, map_data->str_split[i]);
+		map_data->int_array[i] = ft_atoi(map_data->str_split[i]);
+		// printf("map_data->int_array[%d] = %i\n", i, map_data->int_array[i]);
 		i++;
 	}
-	printf("!!!! map_data->rows = %d\n", map_data->rows);
+	fill_data_points(map_data);
 	close(map_fd);
 }

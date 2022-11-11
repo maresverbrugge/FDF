@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/11 11:23:03 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/11 15:06:04 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ W 		= 	\x1b[0m
 all:		$(NAME)
 
 $(NAME):	$(OBJ) $(HEADER) $(LIBFT) $(PRINTF) $(MLX)
-			@$(CC) $(OBJ) -I$(HEADER) $(LIBFT) $(PRINTF) $(MLX) $(FLAGS_M) -o$@
+			@$(CC) $(OBJ) -I$(HEADER) $(LIBFT) $(PRINTF) $(MLX) $(FLAGS_M) $(SANI) -o$@
 			@echo "$(Y)Just made... "
 			@echo "\n$(Y)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(W)\n"
 			@echo "            $(Y)$@ $(G)$@ $(B)$@ $(P)$@ $(R)$@!"

@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/10 15:16:36 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/11 14:52:28 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,16 @@ void	fdf(int argc, char **argv)
 	if (argc > 1)
 	{
 		parse_map(argv, &map_data);
-		// free(map_data.data_points);
-		// printf("rows = %d\n", map_data.rows);
-		// printf("column = %d\n", map_data.columns);
-		// printf("data_points = %d\n", map_data.data_points);
+		// printf("map_data.rows = %d\n", map_data.rows);
+		// printf("map_data.columns = %d\n", map_data.columns);
+		// printf("map_data.amount_of_points = %d\n", map_data.amount_of_points);
+		// printf("map_data.map_as_str = \n%s\n", map_data.map_as_str);
+		// int i = 0;
+		// while (map_data.str_split[i])
+		// {
+		// 	printf("map_data.str_split[%d] = %s\n", i, map_data.str_split[i]);
+		// 	i++;
+		// }
 	}
 }
 
