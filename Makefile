@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/11 17:19:03 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/14 12:52:02 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ W 		= 	\x1b[0m
 # "all" builds executable, should recompile only the updated source files
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(HEADER) $(LIBFT) $(PRINTF) $(MLX)
+$(NAME):	$(OBJ) $(HEADER) $(LIBFT) $(PRINTF) $(MLX) 
 			@$(CC) $(OBJ) -I$(HEADER) $(LIBFT) $(PRINTF) $(MLX) $(FLAGS_M) $(SANI) -o$@
 			@echo "$(Y)Just made... "
 			@echo "\n$(Y)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(W)\n"
@@ -77,11 +77,10 @@ clean:
 			@echo "\n$(R)$@ $(W)object files and obj directory"
 			@${RM} -r $(OBJ_DIR)
 
-# fclean deletes temporary/object files and executable
+# fclean deletes temporary/object files and executable 	@$(MAKE) fclean -C MLX42
 fclean: 	clean
 			@$(MAKE) fclean -C libft
 			@$(MAKE) fclean -C printf
-			@$(MAKE) fclean -C MLX42
 			@echo "$(P)$@ $(W)object files, obj directories, .a and executable"
 			@$(RM) $(NAME)
 

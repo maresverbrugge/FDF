@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/11 15:43:59 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/14 12:49:57 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	parse_map(char **argv, t_map *map_data);
 int     map_to_str(int fd, char **map);
 void	fill_data_points(t_map *map_data);
 int     get_next_line(int fd, char **line);
+char	*free_2d_array(char **array_2d);
 
 #endif

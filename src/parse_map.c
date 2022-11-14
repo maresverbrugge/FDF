@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 12:11:14 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/11 17:10:28 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/14 12:46:31 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,29 @@ int	count_rows(char *str)
 	rows = 0;
 	while (map_split_on_newline[rows])
 		rows++;
+	free_2d_array(map_split_on_newline);
+	// int i = 0;
+	// while (map_split_on_newline[i])
+	// {
+	// 	free(map_split_on_newline[i]);
+	// 	i++;
+	// }
+	// free(map_split_on_newline);
 	return (rows);
+}
+
+char	*free_2d_array(char **array_2d)
+{
+	size_t	i;
+
+	i = 0;
+	while (array_2d[i])
+	{
+		free(array_2d[i]);
+		i++;
+	}
+	free(array_2d);
+	return (NULL);
 }
 
 int	count_columns(char *str)
@@ -54,6 +76,8 @@ int	count_columns(char *str)
 	while (split_on_space[columns])
 		columns++;
 	// printf("columns = %d\n", columns);
+	free_2d_array(split_on_nl);
+	free_2d_array(split_on_space);
 	return (columns);
 }
 
@@ -108,5 +132,7 @@ void	parse_map(char **argv, t_map *map_data)
 		i++;
 	}
 	fill_data_points(map_data);
+	// free(map_data->map_as_str);
+	free(str);
 	close(map_fd);
 }

@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/11 17:21:41 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/14 12:37:00 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ void	fdf(int argc, char **argv)
 		// 	printf("map_data.str_split[%d] = %s\n", i, map_data.str_split[i]);
 		// 	i++;
 		// }
+		free(map_data.data_points);
+		free(map_data.int_array);
+		free_2d_array(map_data.str_split);
 	}
 }
 

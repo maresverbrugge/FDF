@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 15:12:17 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/10 12:16:01 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/14 12:46:59 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char	*join_str(char *s1, char *s2)
 	ft_memmove(joined, s1, len_s1);
 	ft_memmove(joined + len_s1, s2, len_s2);
 	joined[len_s1 + len_s2] = '\0';
+	free(s1);
 	return (joined);
 }
 
