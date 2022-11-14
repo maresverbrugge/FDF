@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/14 12:49:57 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/14 15:05:08 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #define WIDTH 256
 #define HEIGHT 256
 
-// for GNL
+// for map_to_str
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32
 # endif

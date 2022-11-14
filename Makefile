@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/14 12:52:02 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/14 16:02:26 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,7 @@ VPATH	=	./src
 SRC		=	main.c			\
 			parse_map.c		\
 			read_map.c		\
-			fill_data.c		\
-			gnl.c
-			
+			fill_data.c
 
 # OBJ = .o files
 OBJ_DIR	=	./obj
@@ -81,6 +79,7 @@ clean:
 fclean: 	clean
 			@$(MAKE) fclean -C libft
 			@$(MAKE) fclean -C printf
+			@$(MAKE) fclean -C MLX42
 			@echo "$(P)$@ $(W)object files, obj directories, .a and executable"
 			@$(RM) $(NAME)
 
