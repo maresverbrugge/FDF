@@ -16,6 +16,7 @@
 - input parsen  
 - miniLibX onderzoeken (sparksessie?)  
 - https://github.com/VBrazhnik/FdF/wiki 
+- https://git.42l.fr/Fabien/fdf 
 - isometric transformations uitzoeken  
 - sin tan cos uitzoeken  
 - drawing a line uitzoeken 
