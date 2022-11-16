@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/14 15:05:08 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/16 15:36:13 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <stdlib.h> // for malloc, free, exit
 # include <unistd.h> // for write, read
 # include <fcntl.h> // for open
+
+#include <math.h> 
 
 // for MLX42
 #define WIDTH 256

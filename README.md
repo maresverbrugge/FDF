@@ -15,8 +15,11 @@
 - miniLibX clonen en werkend krijgen  
 - input parsen  
 - miniLibX onderzoeken (sparksessie?)  
-- raster tekenen  
+- https://github.com/VBrazhnik/FdF/wiki 
+- isometric transformations uitzoeken  
 - sin tan cos uitzoeken  
+- drawing a line uitzoeken 
+- raster tekenen  
 - data punten draaien  
 - code slayen  
   
