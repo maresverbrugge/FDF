@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/16 16:48:55 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/17 12:36:45 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,9 @@ int	fdf(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		// Creates a whole new image:
 		the_map = mlx_new_image(mlx, 128, 128);
+		mlx_put_pixel(the_map, 10, 10, 	0xFFFFFFFF);
 		// Set every pixel to white:
-		memset(the_map->pixels, 255, the_map->width * the_map->height * sizeof(int));
+		// memset(the_map->pixels, 255, the_map->width * the_map->height * sizeof(int));
 		// Creates a new instance/copy of an already existing image:
 		mlx_image_to_window(mlx, the_map, 0, 0);
 		mlx_loop_hook(mlx, &hook, mlx);
