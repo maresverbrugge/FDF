@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/17 15:11:16 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/17 15:37:19 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,26 @@ void free_all(t_map *map_data)
 	free_2d_array(map_data->str_split);
 }
 
+void	draw_test_line(mlx_image_t *the_map, t_map *map_data)
+{
+	int start_x = map_data->data_points[0].x;
+	int end_x = map_data->data_points[1].x;
+	int y = map_data->data_points[0].y;
+	while(end_x > start_x)
+	{
+		mlx_put_pixel(the_map, end_x, y, 0xFFFFFFFF);
+		end_x--;
+	}
+	int start_y = map_data->data_points[0].y;
+	int end_y = map_data->data_points[19].y;
+	int x = 0;
+	while(end_y > start_y)
+	{
+		mlx_put_pixel(the_map, x, end_y, 0xFFFFFFFF);
+		end_y--;
+	}
+}
+
 void	draw_grid(mlx_image_t *the_map, t_map *map_data)
 {
 	int i;
@@ -43,17 +63,15 @@ void	draw_grid(mlx_image_t *the_map, t_map *map_data)
 	i = 0;
 	while(i < map_data->amount_of_points)
 	{
-		int x = map_data->data_points[i].x * 42;
-		int y = map_data->data_points[i].y * 70;
-		// space_x = map_data->data_points[i].x * 10;
-		// space_y = map_data->data_points[i].y * 10;
-		mlx_put_pixel(the_map, 100 + x, 100 + y, 0x00F400FF);
+		map_data->data_points[i].x = map_data->data_points[i].x * 42;
+		map_data->data_points[i].y = map_data->data_points[i].y * 70;
+		mlx_put_pixel(the_map, map_data->data_points[i].x, map_data->data_points[i].y, 0x00F400FF);
 		// printf("i = %d\n", i);
 		i++;
 		// map_data->data_points[i].x += 10;
 		// map_data->data_points[i].y += 10;
 	}
-	
+	draw_test_line(the_map, map_data);
 }
 
 int	fdf(int argc, char **argv)
