@@ -49,5 +49,6 @@ and quit the program in a clean way.
 
 
 ## TO DO:  
-- centering grid in middle of image (+ start_x and + start_y)  
+- make edit_data_points universal for every map (space between data points)  
+- centering grid in middle of image  
 - 
