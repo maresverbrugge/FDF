@@ -46,3 +46,8 @@ and quit the program in a clean way.
 - describing 3D shapes  
 - drawing 3D shapes  
 - rotating 3D shapes  
+
+
+## TO DO:  
+- centering grid in middle of image (+ start_x and + start_y)  
+- 

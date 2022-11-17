@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/17 12:36:45 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/17 15:11:16 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,26 @@ void free_all(t_map *map_data)
 	free_2d_array(map_data->str_split);
 }
 
+void	draw_grid(mlx_image_t *the_map, t_map *map_data)
+{
+	int i;
+	
+	i = 0;
+	while(i < map_data->amount_of_points)
+	{
+		int x = map_data->data_points[i].x * 42;
+		int y = map_data->data_points[i].y * 70;
+		// space_x = map_data->data_points[i].x * 10;
+		// space_y = map_data->data_points[i].y * 10;
+		mlx_put_pixel(the_map, 100 + x, 100 + y, 0x00F400FF);
+		// printf("i = %d\n", i);
+		i++;
+		// map_data->data_points[i].x += 10;
+		// map_data->data_points[i].y += 10;
+	}
+	
+}
+
 int	fdf(int argc, char **argv)
 {
 	t_map		map_data;
@@ -55,14 +75,13 @@ int	fdf(int argc, char **argv)
 		// 	printf("map_data.str_split[%d] = %s\n", i, map_data.str_split[i]);
 		// 	i++;
 		// }
-		mlx = mlx_init(WIDTH, HEIGHT, "Marès is koning", true);
+		mlx = mlx_init(1000, 1000, "Marès is koning", true);
 		if (!mlx)
 			exit(EXIT_FAILURE);
 		// Creates a whole new image:
-		the_map = mlx_new_image(mlx, 128, 128);
-		mlx_put_pixel(the_map, 10, 10, 	0xFFFFFFFF);
-		// Set every pixel to white:
-		// memset(the_map->pixels, 255, the_map->width * the_map->height * sizeof(int));
+		the_map = mlx_new_image(mlx, 2000, 2000);
+		// Draw data points on image:
+		draw_grid(the_map, &map_data);
 		// Creates a new instance/copy of an already existing image:
 		mlx_image_to_window(mlx, the_map, 0, 0);
 		mlx_loop_hook(mlx, &hook, mlx);
