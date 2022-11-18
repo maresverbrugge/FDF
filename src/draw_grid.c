@@ -6,11 +6,12 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/17 18:06:33 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/17 18:06:57 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/18 14:38:04 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+
 
 void	draw_horizontal(mlx_image_t *the_map, t_map *map_data)
 {

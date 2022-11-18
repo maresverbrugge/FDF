@@ -15,6 +15,10 @@
 - miniLibX clonen en werkend krijgen  
 - input parsen  
 - miniLibX onderzoeken (sparksessie?)  
+- https://www.khanacademy.org/computing/computer-programming/programming-games-visualizations/programming-3d-shapes/a/creating-3d-shapes  
+- describing 3D shapes  
+- drawing 3D shapes  
+- rotating 3D shapes  
 - https://github.com/VBrazhnik/FdF/wiki 
 - https://git.42l.fr/Fabien/fdf 
 - isometric transformations uitzoeken  
@@ -42,10 +46,6 @@ and quit the program in a clean way.
 - y = hoeveelste rij = \n tellen  
 - z = inhoud van nummer  
   
-- https://www.khanacademy.org/computing/computer-programming/programming-games-visualizations/programming-3d-shapes/a/creating-3d-shapes  
-- describing 3D shapes  
-- drawing 3D shapes  
-- rotating 3D shapes  
 
 
 ## TO DO:  
