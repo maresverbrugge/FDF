@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 15:58:56 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/18 14:55:27 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/21 16:41:54 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	edit_data_points(t_map *map_data)
 		z = map_data->data_points[i].z;
 		map_data->data_points[i].x = ((previous_x - previous_y) * cos(0.523599))* 10;
 		map_data->data_points[i].y = (-z + (previous_x + previous_y) * sin(0.523599)) * 10;
-	
+
 		// map_data->data_points[i].x = (i % map_data->columns) * 42;
 		// printf("x = %i\t", map_data->data_points[i].x);
 		// map_data->data_points[i].y = (i / map_data->columns) * 42;
@@ -54,4 +54,3 @@ void	edit_data_points(t_map *map_data)
 		i++;
 	}
 }
-
