@@ -100,3 +100,7 @@ while (i < map_data->amount_of_points)
      i++;  
 }  
   
+# continue:  
+https://www.youtube.com/watch?v=vlZFSzCIwoc  
+https://www.youtube.com/watch?v=RGB-wlatStc  
+https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm  
