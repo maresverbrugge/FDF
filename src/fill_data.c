@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 15:58:56 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/22 16:11:48 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/22 16:29:17 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	rotation_on_x_axis(t_map *map_data, double degree)
 		old_y = map_data->data_points[i].y;
 		old_z = map_data->data_points[i].z;
 		map_data->data_points[i].y = ((old_y * cos(rad)) - (old_z * sin(rad)));
+		// map_data->data_points[i].z = ((old_y * sin(rad)) + (old_z * cos(rad)));
 		i++;
 	}
 }
@@ -76,7 +77,7 @@ void	rotation_on_x_axis(t_map *map_data, double degree)
 // {
 // 	int	i;
 // 	double rad;
-//     int old_x;
+//  int old_x;
 // 	int	old_z;
 
 // 	i = 0;
