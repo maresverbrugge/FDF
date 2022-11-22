@@ -67,3 +67,36 @@ Representative Scale (RF) = iso length / true length
 RF = cos(45)/cos(30)  
 So, iso lengths = 0.82 x true lengths  
 
+![Alt text](rotation_formulas.png "math")
+
+#### OLD MATH:
+int	i;  
+int old_x;  
+int old_y;  
+int	z;  
+double degree;  
+  
+i = 0;  
+degree = 45.0;  
+add_spacing(map_data);  
+while (i < map_data->amount_of_points)   
+{   
+     map_data->data_points[i].x *= 10;  
+     map_data->data_points[i].y *= 10;  
+     old_x = map_data->data_points[i].x;  
+     old_y = map_data->data_points[i].y;  
+     z = map_data->data_points[i].z;  
+     map_data->data_points[i].x = ((old_x - old_y) * cos(rad))* 10;  
+     map_data->data_points[i].y = (-z + (old_x + old_y) * sin(rad)) * 10;  
+  
+     // OF:  
+     // map_data->data_points[i].x = ((old_x * cos(rad)) - (old_y * sin(rad))) * 10;  
+     // map_data->data_points[i].y = (-z + (old_x * sin(rad)) + (old_y * cos(rad))) * 10;  
+  
+     // OF:  
+     // map_data->data_points[i].x = ((old_x - old_y) * cos(rad))* 10;  
+     // map_data->data_points[i].y = ((old_x * sin(rad)) + (old_y * cos(rad)));  
+     // map_data->data_points[i].y = ((map_data->data_points[i].y * cos(rad)) - (z * sin(rad)))* 10;  
+     i++;  
+}  
+  

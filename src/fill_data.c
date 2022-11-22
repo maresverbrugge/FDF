@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 15:58:56 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/22 15:02:12 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/22 16:11:48 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,26 @@ double	degree_to_rad(double degree)
 }
 
 
-void	rotation_on_z_axis(t_map *map_data)
+void	rotation_on_z_axis(t_map *map_data, double degree)
 {
 	int	i;
 	double rad;
 	int old_x;
     int old_y;
-	int	z;
 
 	i = 0;
-	rad = degree_to_rad(45.0);
-	printf("rad = %f\n", rad);
+	rad = degree_to_rad(degree);
 	while (i < map_data->amount_of_points)
 	{
 		old_x = map_data->data_points[i].x;
 		old_y = map_data->data_points[i].y;
-		z = map_data->data_points[i].z;
 		map_data->data_points[i].x = ((old_x * cos(rad)) - (old_y * sin(rad)));
 		map_data->data_points[i].y = ((old_x * sin(rad)) + (old_y * cos(rad)));
 		i++;
 	}
 }
 
-void	rotation_on_x_axis(t_map *map_data)
+void	rotation_on_x_axis(t_map *map_data, double degree)
 {
 	int	i;
 	double rad;
@@ -65,34 +62,44 @@ void	rotation_on_x_axis(t_map *map_data)
 	int	old_z;
 
 	i = 0;
-	rad = degree_to_rad(45.0);
-	printf("rad = %f\n", rad);
+	rad = degree_to_rad(degree);
 	while (i < map_data->amount_of_points)
 	{
 		old_y = map_data->data_points[i].y;
 		old_z = map_data->data_points[i].z;
 		map_data->data_points[i].y = ((old_y * cos(rad)) - (old_z * sin(rad)));
-		map_data->data_points[i].z = ((old_y * sin(rad)) + (old_z * cos(rad)));
 		i++;
 	}
 }
 
-void	rotation_on_y_axis(t_map *map_data)
+// void	rotation_on_y_axis(t_map *map_data, double degree)
+// {
+// 	int	i;
+// 	double rad;
+//     int old_x;
+// 	int	old_z;
+
+// 	i = 0;
+// 	rad = degree_to_rad(degree);
+// 	while (i < map_data->amount_of_points)
+// 	{
+// 		old_x = map_data->data_points[i].x;
+// 		old_z = map_data->data_points[i].z;
+// 		map_data->data_points[i].x = ((old_x * cos(rad)) + (old_z * sin(rad)));
+// 		map_data->data_points[i].z = ((-old_x * sin(rad)) + (old_z * cos(rad)));
+// 		i++;
+// 	}
+// }
+
+void	add_spacing(t_map *map_data)
 {
 	int	i;
-	double rad;
-    int old_x;
-	int	old_z;
 
 	i = 0;
-	rad = degree_to_rad(45.0);
-	printf("rad = %f\n", rad);
 	while (i < map_data->amount_of_points)
 	{
-		old_x = map_data->data_points[i].x;
-		old_z = map_data->data_points[i].z;
-		map_data->data_points[i].x = ((old_x * cos(rad)) + (old_z * sin(rad)));
-		map_data->data_points[i].z = ((-old_x * sin(rad)) + (old_z * cos(rad)));
+		map_data->data_points[i].x *= 10;
+		map_data->data_points[i].y *= 10;
 		i++;
 	}
 }
@@ -100,36 +107,13 @@ void	rotation_on_y_axis(t_map *map_data)
 void	edit_data_points(t_map *map_data)
 {
 	int	i;
-	// int old_x;
-    // int old_y;
-	// int	z;
-	double rad;
+	double degree;
 
 	i = 0;
-	rad = degree_to_rad(45.0);
-	printf("rad = %f\n", rad);
-	printf("map_data rows = %d\n", map_data->rows);
-
-	while (i < map_data->amount_of_points)
-	{
-		map_data->data_points[i].x *= 10;
-		map_data->data_points[i].y *= 10;
-		// old_x = map_data->data_points[i].x;
-		// old_y = map_data->data_points[i].y;
-		// z = map_data->data_points[i].z;
-		// map_data->data_points[i].x = ((old_x - old_y) * cos(rad))* 10;
-		// map_data->data_points[i].y = (-z + (old_x + old_y) * sin(rad)) * 10;
-		// OF:
-		// map_data->data_points[i].x = ((old_x * cos(rad)) - (old_y * sin(rad))) * 10;
-		// map_data->data_points[i].y = (-z + (old_x * sin(rad)) + (old_y * cos(rad))) * 10;
-		// OF:
-		// map_data->data_points[i].x = ((old_x - old_y) * cos(rad))* 10;
-		// map_data->data_points[i].y = ((old_x * sin(rad)) + (old_y * cos(rad)));
-		// map_data->data_points[i].y = ((map_data->data_points[i].y * cos(rad)) - (z * sin(rad)))* 10;
-		i++;
-	}
-	rotation_on_z_axis(map_data);
-	rotation_on_x_axis(map_data);
+	degree = 45.0;
+	add_spacing(map_data);
+	rotation_on_z_axis(map_data, degree);
+	rotation_on_x_axis(map_data, degree);
 	// rotation_on_y_axis(map_data);
 }
 
