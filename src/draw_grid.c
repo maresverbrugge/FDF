@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/17 18:06:33 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/22 17:04:25 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/22 17:07:55 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,7 @@ void	draw_diagonal(mlx_image_t *the_map, t_map *map_data)
 	while (i < biggest_dist)
 	{
 		f1 = error - delta_y;
-		y_start = map_data->data_points[i].y;
-		y_end = map_data->data_points[i + map_data->columns].y;
-		while (y_start < y_end)
-		{
-			mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
-				100 + y_start, 0x00828282);
-			y_start++;
-		}
+		// to be continued
 		i++;
 	}
 }
