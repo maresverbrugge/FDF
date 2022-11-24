@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/24 09:15:10 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/24 15:46:27 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ norm:		del
 
 git: 		del
 			git add *
-			git commit -m "Bresenham time"
+			git commit -m "Getting ourselves some diagonal lines people"
 			git push origin master
 
 # "Updatin' my way through life"

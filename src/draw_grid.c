@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/17 18:06:33 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/24 13:59:45 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/24 15:41:42 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,12 +128,13 @@ void	bresenham(mlx_image_t *the_map, int start_x, int end_x, int start_y, int en
 	delta_x = absolute(end_x - start_x); // start_x = map_data->data_points[i].x en end_x = map_data->data_points[i + 1].x
 	delta_y = -absolute(end_y - start_y); // start_y = map_data->data_points[i].y en end_y = map_data->data_points[i + 1].y
 	
-	sx = start_x < end_x ? 1 : -1;
-	sy = start_y < end_y ? 1 : -1;
+	sx = (start_x < end_x) ? 1 : -1;
+	sy = (start_y < end_y) ? 1 : -1;
 
 	error = delta_x + delta_y;
+	// error = 2 * delta_y - delta_x;
 
-	while (start_x < end_x)
+	while (1) // start_x < end_x
 	{
 		mlx_put_pixel(the_map, 100 + start_x,
 			100 + start_y, 0x00F400FF);
@@ -155,9 +156,6 @@ void	bresenham(mlx_image_t *the_map, int start_x, int end_x, int start_y, int en
 			start_y += sy;
 		}
 	}
-	// draw last point (x1, y1)!!! 
-	// mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
-	// 		100 + map_data->data_points[i].y, 0x00F400FF);
 }
 
 void	draw_grid(mlx_image_t *the_map, t_map *map_data)
@@ -169,29 +167,48 @@ void	draw_grid(mlx_image_t *the_map, t_map *map_data)
 	int	end_y = 0;
 
 	i = 0;
-	draw_horizontal(the_map, map_data);
-	draw_vertical(the_map, map_data);
-	while (i < map_data->amount_of_points - 1)
+	// draw_horizontal(the_map, map_data);
+	// draw_vertical(the_map, map_data);
+	while (i < map_data->amount_of_points)
 	{
-		mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
-			100 + map_data->data_points[i].y, 0x00F400FF);
+		if (i % map_data->columns == (map_data->columns - 1))
+		{
+			i++;
+			continue;
+		}
 		start_x = map_data->data_points[i].x;
 		end_x = map_data->data_points[i + 1].x;
 		start_y = map_data->data_points[i].y;
 		end_y = map_data->data_points[i + 1].y;
+		// if (start_x > end_x)
+		// 	break ;
 		bresenham(the_map, start_x, end_x, start_y, end_y);
 		i++;
 	}
-	mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
-			100 + map_data->data_points[i].y, 0x00F400FF);
 	i = 0;
-	while (i < map_data->amount_of_points - 1)
+	while (i < map_data->amount_of_points - map_data->columns)
 	{
+		// if (i % map_data->rows == (map_data->rows - 1))
+		// {
+		// 	i++;
+		// 	continue;
+		// }
 		start_x = map_data->data_points[i].x;
-		end_x = map_data->data_points[i + 1].x;
+		end_x = map_data->data_points[i + map_data->columns].x;
 		start_y = map_data->data_points[i].y;
 		end_y = map_data->data_points[i + map_data->columns].y;
-		bresenham(the_map, start_x, end_x, start_y, end_y);
+		// while (start_y < end_y)
+			bresenham(the_map, start_x, end_x, start_y, end_y);
 		i++;
 	}
+	// i = 0;
+	// while (i < map_data->amount_of_points - 1)
+	// {
+	// 	start_x = map_data->data_points[i].x;
+	// 	end_x = map_data->data_points[i + 1].x;
+	// 	start_y = map_data->data_points[i].y;
+	// 	end_y = map_data->data_points[i + map_data->columns].y;
+	// 	bresenham(the_map, start_x, end_x, start_y, end_y);
+	// 	i++;
+	// }
 }
