@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 15:58:56 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/22 16:29:17 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/24 13:46:42 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	rotation_on_z_axis(t_map *map_data, double degree)
 	{
 		old_x = map_data->data_points[i].x;
 		old_y = map_data->data_points[i].y;
-		map_data->data_points[i].x = ((old_x * cos(rad)) - (old_y * sin(rad)));
-		map_data->data_points[i].y = ((old_x * sin(rad)) + (old_y * cos(rad)));
+		map_data->data_points[i].x = ((old_x * cos(rad)) - (old_y * sin(rad))) + 100;
+		map_data->data_points[i].y = ((old_x * sin(rad)) + (old_y * cos(rad))) + 100;
 		i++;
 	}
 }
@@ -67,7 +67,7 @@ void	rotation_on_x_axis(t_map *map_data, double degree)
 	{
 		old_y = map_data->data_points[i].y;
 		old_z = map_data->data_points[i].z;
-		map_data->data_points[i].y = ((old_y * cos(rad)) - (old_z * sin(rad)));
+		map_data->data_points[i].y = (((old_y * cos(rad)) - (old_z * sin(rad)))) + 100;
 		// map_data->data_points[i].z = ((old_y * sin(rad)) + (old_z * cos(rad)));
 		i++;
 	}
@@ -99,8 +99,8 @@ void	add_spacing(t_map *map_data)
 	i = 0;
 	while (i < map_data->amount_of_points)
 	{
-		map_data->data_points[i].x *= 10;
-		map_data->data_points[i].y *= 10;
+		map_data->data_points[i].x *= 20;
+		map_data->data_points[i].y *= 20;
 		i++;
 	}
 }

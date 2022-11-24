@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/17 18:06:33 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/24 09:14:42 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/24 13:59:45 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,46 +55,143 @@ void	draw_vertical(mlx_image_t *the_map, t_map *map_data)
 	}
 }
 
-void	bresenham(mlx_image_t *the_map, t_map *map_data)
+int	absolute(int number)
 {
-	int	i;
-	int	start_x;
-	int	end_x;
-	int	start_y;
-	int	end_y;
+	if (number < 0)
+		number *= -1;
+	return (number);
+}
+
+// void	old_bresenham(mlx_image_t *the_map, t_map *map_data)
+// {
+// 	int	i;
+// 	int	start_x;
+// 	int	end_x;
+// 	int	start_y;
+// 	int	end_y;
+// 	int	delta_x;
+// 	int	delta_y;
+// 	int biggest_dist;
+// 	int f_error;
+// 	int error1;
+// 	int error2;
+
+// 	// calculate delta_x and delta_y
+// 	delta_x = absolute(end_x - start_x); // start_x = map_data->data_points[i].x en end_x = map_data->data_points[i + 1].x
+// 	delta_y = -absolute(end_y - start_y); // start_y = map_data->data_points[i].y en end_y = map_data->data_points[i + 1].y
+// 	// decide fastest direction
+// 	if (delta_x > delta_y)
+// 	{
+// 		biggest_dist = delta_x;
+// 		i = start_x;
+// 	}
+// 	else
+// 	{
+// 		biggest_dist = delta_y;
+// 		i = start_y;
+// 	}
+// 	// calculate error = fastest direction / 2
+// 	f_error = biggest_dist / 2;
+// 	// draw first point (x0, y0)
+// 	i = 0;
+// 	mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
+// 			100 + map_data->data_points[i].y, 0x00F400FF);
+// 	error1 = f_error - delta_y;
+// 	while (i < biggest_dist)
+// 	{
+// 		fastest_direction++; // = x;
+// 		error1 -= slowest_direction; // slowest = y;
+// 		if (error1 < 0)
+// 		{
+// 			error1 += delta_x; // reset error by adding fastest direction
+// 			slowest_direction++; // = y;
+// 		}
+// 		mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
+// 			100 + map_data->data_points[i].y, 0x00F400FF);
+// 		i++;
+// 	}
+// 	// draw last point (x1, y1)!!! 
+// 	mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
+// 			100 + map_data->data_points[i].y, 0x00F400FF);
+// }
+
+void	bresenham(mlx_image_t *the_map, int start_x, int end_x, int start_y, int end_y)
+{
 	int	delta_x;
 	int	delta_y;
-	int biggest_dist;
+	int sx;
+	int sy;
 	int error;
+	int error2;
 
-	i = 0;
-	delta_x = end_x - start_x;
-	delta_y = end_y - start_y;
-	if (delta_x > delta_y)
-		biggest_dist = delta_x;
-	else
-		biggest_dist = delta_y;
-	error = biggest_dist / 2;
-	while (i < biggest_dist)
+	// calculate delta_x and delta_y
+	delta_x = absolute(end_x - start_x); // start_x = map_data->data_points[i].x en end_x = map_data->data_points[i + 1].x
+	delta_y = -absolute(end_y - start_y); // start_y = map_data->data_points[i].y en end_y = map_data->data_points[i + 1].y
+	
+	sx = start_x < end_x ? 1 : -1;
+	sy = start_y < end_y ? 1 : -1;
+
+	error = delta_x + delta_y;
+
+	while (start_x < end_x)
 	{
-		f1 = error - delta_y;
-		// to be continued
-		i++;
+		mlx_put_pixel(the_map, 100 + start_x,
+			100 + start_y, 0x00F400FF);
+		if (start_x == end_x && start_y == end_y)
+			break ;
+		error2 = 2 * error;
+		if (error2 >= delta_y)
+		{
+			if (start_x == end_x)
+				break ;
+			error += delta_y;
+			start_x += sx;
+		}
+		if (error2 <= delta_x)
+		{
+			if (start_y == end_y)
+				break ;
+			error += delta_x;
+			start_y += sy;
+		}
 	}
+	// draw last point (x1, y1)!!! 
+	// mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
+	// 		100 + map_data->data_points[i].y, 0x00F400FF);
 }
 
 void	draw_grid(mlx_image_t *the_map, t_map *map_data)
 {
 	int	i;
+	int	start_x = 0;
+	int	end_x = 0;
+	int	start_y = 0;
+	int	end_y = 0;
 
 	i = 0;
 	draw_horizontal(the_map, map_data);
 	draw_vertical(the_map, map_data);
-	// bresenham(the_map, map_data);
-	while (i < map_data->amount_of_points)
+	while (i < map_data->amount_of_points - 1)
 	{
 		mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
 			100 + map_data->data_points[i].y, 0x00F400FF);
+		start_x = map_data->data_points[i].x;
+		end_x = map_data->data_points[i + 1].x;
+		start_y = map_data->data_points[i].y;
+		end_y = map_data->data_points[i + 1].y;
+		bresenham(the_map, start_x, end_x, start_y, end_y);
+		i++;
+	}
+	mlx_put_pixel(the_map, 100 + map_data->data_points[i].x,
+			100 + map_data->data_points[i].y, 0x00F400FF);
+	i = 0;
+	while (i < map_data->amount_of_points - 1)
+	{
+		start_x = map_data->data_points[i].x;
+		end_x = map_data->data_points[i + 1].x;
+		start_y = map_data->data_points[i].y;
+		end_y = map_data->data_points[i + map_data->columns].y;
+		bresenham(the_map, start_x, end_x, start_y, end_y);
 		i++;
 	}
 }
