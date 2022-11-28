@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 12:11:14 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/18 12:55:38 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/28 09:50:17 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@ int	open_map(char **argv)
 		exit(EXIT_FAILURE);
 	}
 	return (map_fd);
+}
+
+char	*free_2d_array(char **array_2d)
+{
+	size_t	i;
+
+	i = 0;
+	while (array_2d[i])
+	{
+		free(array_2d[i]);
+		i++;
+	}
+	free(array_2d);
+	return (NULL);
 }
 
 int	count_rows(char *str)
@@ -48,20 +62,6 @@ int	count_rows(char *str)
 	// }
 	// free(map_split_on_newline);
 	return (rows);
-}
-
-char	*free_2d_array(char **array_2d)
-{
-	size_t	i;
-
-	i = 0;
-	while (array_2d[i])
-	{
-		free(array_2d[i]);
-		i++;
-	}
-	free(array_2d);
-	return (NULL);
 }
 
 int	count_columns(char *str)

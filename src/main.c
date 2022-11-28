@@ -6,11 +6,17 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/24 13:25:17 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/28 10:55:23 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
+
+void error(void)
+{
+	ft_putendl_fd(strerror(mlx_errno), 2);
+	exit(EXIT_FAILURE);
+}
 
 void	hook(void *mlx)
 {
@@ -30,21 +36,24 @@ int	fdf(int argc, char **argv)
 {
 	t_map		map_data;
 	mlx_t		*mlx;
-	mlx_image_t	*the_map;
+	mlx_image_t	*the_map = NULL;
 
 	if (argc > 1)
 	{
 		parse_map(argv, &map_data);
 		edit_data_points(&map_data);
-		mlx = mlx_init(1000, 1000, "Marès is koning", true);
+		// mlx_set_setting(MLX_MAXIMIZED, true);
+		mlx = mlx_init(WIDTH, HEIGHT, "Marès is koning", true);
+		// mlx = NULL;
 		if (!mlx)
-			exit(EXIT_FAILURE);
+			error();
 		// Creates a whole new image:
 		the_map = mlx_new_image(mlx, 1000, 1000);
+		if (!the_map || mlx_image_to_window(mlx, the_map, 0, 0) < 0)
+			error();
 		// Draw data points on image:
 		draw_grid(the_map, &map_data);
 		// Creates a new instance/copy of an already existing image:
-		mlx_image_to_window(mlx, the_map, 0, 0);
 		mlx_loop_hook(mlx, &hook, mlx);
 		mlx_loop(mlx);
 		// Deletes an image and removes it from the render queue:

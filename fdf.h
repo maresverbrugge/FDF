@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/18 12:56:13 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/28 10:32:16 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 #include <math.h> 
 
 // for MLX42
-#define WIDTH 256
-#define HEIGHT 256
+#define WIDTH 1000 // 256
+#define HEIGHT 1000 // 256
 
 // for map_to_str
 # ifndef BUFFER_SIZE
