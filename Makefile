@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/24 15:46:27 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/11/28 12:09:21 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ VPATH	=	./src
 SRC		=	main.c			\
 			parse_map.c		\
 			read_map.c		\
-			fill_data.c		\
-			draw_grid.c
+			edit_data.c		\
+			draw_map.c
 
 # OBJ = .o files
 OBJ_DIR	=	./obj

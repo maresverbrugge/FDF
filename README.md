@@ -51,8 +51,9 @@ and quit the program in a clean way.
 ## TO DO:  
 - make edit_data_points universal for every map (space between data points)  
 - centering grid in middle of image  
+- wrapper for put_pixel  
 - coloring for z-value: https://github.com/codam-coding-college/MLX42/wiki/Colors
-
+- translation of image (hook)  
 
 # Facts  
 Isometric projection is a method for visually representing three-dimensional  

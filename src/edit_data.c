@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   fill_data.c                                        :+:    :+:            */
+/*   edit_data.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 15:58:56 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/24 16:24:07 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/28 12:32:36 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void	fill_data_points(t_map *map_data)
-{
-	int	i;
-
-	i = 0;
-	while (i < map_data->amount_of_points)
-	{
-		map_data->data_points[i].x = i % map_data->columns;
-		printf("x = %i\t", map_data->data_points[i].x);
-		map_data->data_points[i].y = i / map_data->columns;
-		printf("y = %i\t", map_data->data_points[i].y);
-		map_data->data_points[i].z = map_data->int_array[i];
-		printf("z = %i\t\n", map_data->data_points[i].z);
-		i++;
-	}
-}
-
 double	degree_to_rad(double degree)
 {
 	return (degree * (M_PI / 180));
 }
-
 
 void	rotation_on_z_axis(t_map *map_data, double degree)
 {
@@ -92,6 +74,24 @@ void	rotation_on_x_axis(t_map *map_data, double degree)
 // 	}
 // }
 
+int	calc_space(t_map *map_data, int axis)
+{
+	int space;
+	int	max_distance;
+	int	axis_size;
+
+	max_distance = 20;
+	if (axis == map_data->columns)
+		axis_size = MAP_LENGTH;
+	if (axis == map_data->rows)
+		axis_size = MAP_WIDTH;
+	space = axis_size / axis;
+	if (space > max_distance)
+		return (max_distance);
+	else
+		return (space);
+}
+
 void	add_spacing(t_map *map_data)
 {
 	int	i;
@@ -99,8 +99,8 @@ void	add_spacing(t_map *map_data)
 	i = 0;
 	while (i < map_data->amount_of_points)
 	{
-		map_data->data_points[i].x *= 20;
-		map_data->data_points[i].y *= 20;
+		map_data->data_points[i].x *= calc_space(map_data, map_data->columns);
+		map_data->data_points[i].y *= calc_space(map_data, map_data->rows);
 		i++;
 	}
 }
@@ -117,15 +117,3 @@ void	edit_data_points(t_map *map_data)
 	rotation_on_x_axis(map_data, degree);
 	// rotation_on_y_axis(map_data);
 }
-
-
-
-// #include <math.h>
-// int hoek = 65 * (M_PI / 180.0);
-// float old_x = 5.0;
-// float old_y = 5.0;
-// float new_x = old_x * cos(hoek) - old_y * sin(hoek);
-// float new_y = old_x * sin(hoek) + old_y * cos(hoek);
-// ft_printf("x = %d\n", new_x);
-// ft_printf("y = %d\n", new_y);
-

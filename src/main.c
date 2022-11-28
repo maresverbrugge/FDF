@@ -6,13 +6,13 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/28 10:55:23 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/28 12:18:03 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void error(void)
+void	error(void)
 {
 	ft_putendl_fd(strerror(mlx_errno), 2);
 	exit(EXIT_FAILURE);
@@ -23,6 +23,14 @@ void	hook(void *mlx)
 	// Close the window when pressing escape key
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
+	// if (mlx_is_key_down(mlx, MLX_KEY_UP))
+	// 	the_map->instances[0].y -= 5;
+	// if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
+	// 	the_map->instances[0].y += 5;
+	// if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
+	// 	the_map->instances[0].x -= 5;
+	// if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
+	// 	the_map->instances[0].x += 5;
 }
 
 void	free_all(t_map *map_data)
@@ -36,19 +44,21 @@ int	fdf(int argc, char **argv)
 {
 	t_map		map_data;
 	mlx_t		*mlx;
-	mlx_image_t	*the_map = NULL;
+	mlx_image_t	*the_map;
 
 	if (argc > 1)
 	{
 		parse_map(argv, &map_data);
 		edit_data_points(&map_data);
 		// mlx_set_setting(MLX_MAXIMIZED, true);
-		mlx = mlx_init(WIDTH, HEIGHT, "Marès is koning", true);
+		// Start mlx:
+		mlx = mlx_init(SCREEN_WIDTH, SCREEN_LENGTH, "Marès is koning", true);
 		// mlx = NULL;
 		if (!mlx)
 			error();
-		// Creates a whole new image:
-		the_map = mlx_new_image(mlx, 1000, 1000);
+		// Create a new image:
+		the_map = mlx_new_image(mlx, MAP_WIDTH, MAP_LENGTH);
+		//  Display instance of image:
 		if (!the_map || mlx_image_to_window(mlx, the_map, 0, 0) < 0)
 			error();
 		// Draw data points on image:

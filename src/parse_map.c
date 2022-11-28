@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 12:11:14 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/28 09:50:17 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/28 12:10:34 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,23 @@ int	count_columns(char *str)
 	free_2d_array(split_on_nl);
 	free_2d_array(split_on_space);
 	return (columns);
+}
+
+void	fill_data_points(t_map *map_data)
+{
+	int	i;
+
+	i = 0;
+	while (i < map_data->amount_of_points)
+	{
+		map_data->data_points[i].x = i % map_data->columns;
+		printf("x = %i\t", map_data->data_points[i].x);
+		map_data->data_points[i].y = i / map_data->columns;
+		printf("y = %i\t", map_data->data_points[i].y);
+		map_data->data_points[i].z = map_data->int_array[i];
+		printf("z = %i\t\n", map_data->data_points[i].z);
+		i++;
+	}
 }
 
 void	parse_map(char **argv, t_map *map_data)
