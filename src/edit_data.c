@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 15:58:56 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/28 14:44:54 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/28 16:07:34 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,26 @@ void	rotation_on_x_axis(t_map *map_data, double degree)
 // 	}
 // }
 
-int	calc_space(t_map *map_data, int axis)
+int	calc_space_x(t_map *map_data)
 {
 	int space;
 	int	max_distance;
-	int	axis_size;
 
 	max_distance = 25;
-	if (axis == map_data->columns)
-		axis_size = MAP_LENGTH;
-	if (axis == map_data->rows)
-		axis_size = MAP_WIDTH;
-	space = axis_size / axis;
+	space = MAP_LENGTH / map_data->columns;
+	if (space > max_distance)
+		return (max_distance);
+	else
+		return (space);
+}
+
+int	calc_space_y(t_map *map_data)
+{
+	int space;
+	int	max_distance;
+
+	max_distance = 25;
+	space = MAP_WIDTH / map_data->rows;
 	if (space > max_distance)
 		return (max_distance);
 	else
@@ -99,8 +107,8 @@ void	add_spacing(t_map *map_data)
 	i = 0;
 	while (i < map_data->amount_of_points)
 	{
-		map_data->data_points[i].x *= calc_space(map_data, map_data->columns);
-		map_data->data_points[i].y *= calc_space(map_data, map_data->rows);
+		map_data->data_points[i].x *= calc_space_x(map_data);
+		map_data->data_points[i].y *= calc_space_y(map_data);
 		i++;
 	}
 }
@@ -118,6 +126,7 @@ int	find_smallest_x(t_map *map_data)
 			smallest_x = map_data->data_points[i].x;
 		i++;
 	}
+	printf("smallest x = %d\n", smallest_x);
 	return (smallest_x);
 }
 
@@ -134,6 +143,7 @@ int	find_smallest_y(t_map *map_data)
 			smallest_y = map_data->data_points[i].y;
 		i++;
 	}
+	printf("smallest y = %d\n", smallest_y);
 	return (smallest_y);
 }
 
@@ -150,6 +160,7 @@ int	find_biggest_x(t_map *map_data)
 			biggest_x = map_data->data_points[i].x;
 		i++;
 	}
+	printf("biggest x = %d\n", biggest_x);
 	return (biggest_x);
 }
 
@@ -166,6 +177,7 @@ int	find_biggest_y(t_map *map_data)
 			biggest_y = map_data->data_points[i].y;
 		i++;
 	}
+	printf("biggest y = %d\n", biggest_y);
 	return (biggest_y);
 }
 
@@ -174,6 +186,7 @@ int calc_map_length(t_map *map_data)
 	int map_length;
 
 	map_length = find_biggest_x(map_data) - find_smallest_x(map_data);
+	printf("map_length = %d\n", map_length);
 	return (map_length);
 }
 
@@ -182,6 +195,7 @@ int calc_map_width(t_map *map_data)
 	int map_width;
 
 	map_width = find_biggest_y(map_data) - find_smallest_y(map_data);
+	printf("map_width = %d\n", map_width);
 	return (map_width);
 }
 
@@ -198,10 +212,12 @@ void center_map(t_map *map_data)
 	i = 0;
 	while (i < map_data->amount_of_points)
 	{
-		map_data->data_points[i].x = map_data->data_points[i].x
-			+ (SCREEN_LENGTH / 2) + abs(smallest_x) - (map_length / 2);
-		map_data->data_points[i].y = map_data->data_points[i].y
-			+ (SCREEN_WIDTH / 2) - (map_width / 2);
+		map_data->data_points[i].x += (SCREEN_LENGTH / 2) + abs(smallest_x) - (map_length / 2);
+		map_data->data_points[i].y += (SCREEN_WIDTH / 2) - (map_width / 2);
+		// OF:
+	
+		// map_data->data_points[i].x += (SCREEN_LENGTH - map_length) / 2;
+		// map_data->data_points[i].y += (SCREEN_WIDTH - map_width) / 2;
 		i++;
 	}
 }

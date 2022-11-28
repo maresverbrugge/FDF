@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/28 14:41:13 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/11/28 15:49:44 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,8 @@ char	*free_2d_array(char **array_2d);
 void	edit_data_points(t_map *map_data);
 void	draw_grid(mlx_image_t *the_map, t_map *map_data);
 void	remove_newline_str(char *str);
+int		absolute(int number);
+int		calc_map_length(t_map *map_data);
+int		calc_map_width(t_map *map_data);
 
 #endif
