@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/17 18:06:33 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/28 15:51:38 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/01 12:24:44 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	bresenham(mlx_image_t *the_map, t_map *map_data, int direction, int i)
 	error = delta_x + delta_y;
 	while (1)
 	{
-		mlx_put_pixel(the_map, start_x, start_y, 0x00F400FF);
+		mlx_put_pixel(the_map, start_x, start_y, 0xcc33ffFF);
 		if (start_x == end_x && start_y == end_y)
 			break ;
 		error2 = 2 * error;

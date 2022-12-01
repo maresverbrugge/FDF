@@ -105,3 +105,11 @@ while (i < map_data->amount_of_points)
 https://www.youtube.com/watch?v=vlZFSzCIwoc  
 https://www.youtube.com/watch?v=RGB-wlatStc  
 https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm  
+
+
+1. Translating the grid such that the origin is in the center of the grid.  
+2. Scaling the grid to match the sprite size.  
+3. Rotating the grid around the vertical axis by 45 degrees.  
+  
+  𝑥′=𝑥cos(𝜃)−𝑦sin(𝜃)  
+  𝑦′=𝑥sin(𝜃)+𝑦cos(𝜃)  
