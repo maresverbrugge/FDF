@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/28 15:49:44 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/01 13:28:49 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 // for MLX42
 # define SCREEN_WIDTH 1000 // 256
 # define SCREEN_LENGTH 1000 // 256
-# define MAP_WIDTH 800 // 256
-# define MAP_LENGTH 800 // 256
+# define MAP_WIDTH 1000 // 256
+# define MAP_LENGTH 1000 // 256
 
 // for map_to_str
 # ifndef BUFFER_SIZE
