@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 15:58:56 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/28 16:07:34 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/01 11:22:56 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,10 @@ void	add_spacing(t_map *map_data)
 	i = 0;
 	while (i < map_data->amount_of_points)
 	{
-		map_data->data_points[i].x *= calc_space_x(map_data);
-		map_data->data_points[i].y *= calc_space_y(map_data);
+		// map_data->data_points[i].x *= calc_space_x(map_data);
+		// map_data->data_points[i].y *= calc_space_y(map_data);
+		map_data->data_points[i].x *= 10;
+		map_data->data_points[i].y *= 10;
 		i++;
 	}
 }
@@ -228,9 +230,9 @@ void	edit_data_points(t_map *map_data)
 	double degree;
 
 	i = 0;
-	degree = 45.0;
+	degree = 30.0;
 	add_spacing(map_data);
-	rotation_on_z_axis(map_data, degree);
-	rotation_on_x_axis(map_data, degree);
+	rotation_on_z_axis(map_data, 30);
+	rotation_on_x_axis(map_data, 30);
 	// center_map(map_data);
 }
