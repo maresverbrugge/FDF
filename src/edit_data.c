@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 15:58:56 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/12/01 11:22:56 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/01 11:51:25 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,7 +232,7 @@ void	edit_data_points(t_map *map_data)
 	i = 0;
 	degree = 30.0;
 	add_spacing(map_data);
-	rotation_on_z_axis(map_data, 30);
-	rotation_on_x_axis(map_data, 30);
+	rotation_on_z_axis(map_data, 45);
+	// rotation_on_x_axis(map_data, 30);
 	// center_map(map_data);
 }
