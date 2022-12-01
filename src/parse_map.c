@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 12:11:14 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/28 12:10:34 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/01 14:55:46 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,6 @@ int	count_rows(char *str)
 	while (map_split_on_newline[rows])
 		rows++;
 	free_2d_array(map_split_on_newline);
-	// int i = 0;
-	// while (map_split_on_newline[i])
-	// {
-	// 	free(map_split_on_newline[i]);
-	// 	i++;
-	// }
-	// free(map_split_on_newline);
 	return (rows);
 }
 
@@ -75,7 +68,6 @@ int	count_columns(char *str)
 	columns = 0;
 	while (split_on_space[columns])
 		columns++;
-	// printf("columns = %d\n", columns);
 	free_2d_array(split_on_nl);
 	free_2d_array(split_on_space);
 	return (columns);
@@ -120,20 +112,16 @@ void	parse_map(char **argv, t_map *map_data)
 	printf("map_data->rows = %d\n", map_data->rows);
 	printf("map_data->columns = %d\n", map_data->columns);
 	printf("map_data->amount_of_points = %d\n", map_data->amount_of_points);
-	// printf("map_data->map_as_str = \n%s\n", map_data->map_as_str);
 	remove_newline_str(str);
 	map_data->str_split = ft_split(str, ' ');
 	map_data->int_array = malloc(map_data->amount_of_points * sizeof(int));
 	i = 0;
 	while (i < map_data->amount_of_points)
 	{
-		// printf("map_data->str_split[%d] = %s\n", i, map_data->str_split[i]);
 		map_data->int_array[i] = ft_atoi(map_data->str_split[i]);
-		// printf("map_data->int_array[%d] = %i\n", i, map_data->int_array[i]);
 		i++;
 	}
 	fill_data_points(map_data);
-	// free(map_data->map_as_str);
 	free(str);
 	close(map_fd);
 }

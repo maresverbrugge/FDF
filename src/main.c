@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:25:57 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/12/01 13:31:59 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/01 14:56:15 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	free_all(t_map *map_data)
 	free_2d_array(map_data->str_split);
 }
 
+
 int	fdf(int argc, char **argv)
 {
 	t_map		map_data;
@@ -52,7 +53,7 @@ int	fdf(int argc, char **argv)
 		edit_data_points(&map_data);
 		// mlx_set_setting(MLX_MAXIMIZED, true);
 		// Start mlx:
-		mlx = mlx_init(SCREEN_WIDTH, SCREEN_LENGTH, "Marès is koning", true);
+		mlx = mlx_init(SCREEN_WIDTH, SCREEN_LENGTH, "Marès is koning", false);
 		// mlx = NULL;
 		if (!mlx)
 			error();
