@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/12/02 12:16:21 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/05 12:52:16 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 # include <math.h> // for cos and sin
 
 // for MLX42
-# define SCREEN_WIDTH 1000
-# define SCREEN_LENGTH 1000
-# define MAP_WIDTH 1000
-# define MAP_LENGTH 1000
+# define SCREEN_WIDTH 1500
+# define SCREEN_LENGTH 1500
+# define MAP_WIDTH 1500
+# define MAP_LENGTH 1500
 
 // for map_to_str
 # ifndef BUFFER_SIZE
