@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 15:12:17 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/11/18 12:55:44 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/01 15:09:18 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	remove_newline_str(char *str)
 	int	str_len;
 
 	i = 0;
-	// printf("before str = \n%s\n", str);
 	str_len = ft_strlen(str);
 	while (i < str_len)
 	{
@@ -26,7 +25,6 @@ void	remove_newline_str(char *str)
 			str[i] = ' ';
 		i++;
 	}
-	// printf("after str = \n%s\n", str);
 }
 
 char	*join_str(char *s1, char *s2)

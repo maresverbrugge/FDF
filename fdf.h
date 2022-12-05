@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/08 14:20:47 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/12/01 14:56:02 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/02 12:16:21 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@
 # include <stdlib.h> // for malloc, free, exit
 # include <unistd.h> // for write, read
 # include <fcntl.h> // for open
-
-# include <math.h> 
+# include <math.h> // for cos and sin
 
 // for MLX42
-# define SCREEN_WIDTH 1000 // 256
-# define SCREEN_LENGTH 1000 // 256
-# define MAP_WIDTH 1000 // 256
-# define MAP_LENGTH 1000 // 256
+# define SCREEN_WIDTH 1000
+# define SCREEN_LENGTH 1000
+# define MAP_WIDTH 1000
+# define MAP_LENGTH 1000
 
 // for map_to_str
 # ifndef BUFFER_SIZE
@@ -55,16 +54,57 @@ typedef struct s_map
 	t_data_point	*data_points;
 }	t_map;
 
-void	parse_map(char **argv, t_map *map_data);
-int		map_to_str(int fd, char **map);
+typedef struct s_bresenham
+{
+	int	delta_x;
+	int	delta_y;
+	int	sx;
+	int	sy;
+	int	error;
+	int	error2;
+	int	start_x;
+	int	end_x;
+	int	start_y;
+	int	end_y;
+}	t_bresenham;
+
+int		open_map(char **argv);
+int		count_rows(char *str);
+int		count_columns(char *str);
 void	fill_data_points(t_map *map_data);
-int		get_next_line(int fd, char **line);
-char	*free_2d_array(char **array_2d);
+void	parse_map(char **argv, t_map *map_data);
+
+void	rotation_on_z_axis(t_map *map_data, double degree);
+void	rotation_on_x_axis(t_map *map_data, double degree);
+void	add_spacing(t_map *map_data);
+void	center_map(t_map *map_data);
 void	edit_data_points(t_map *map_data);
-void	draw_grid(mlx_image_t *the_map, t_map *map_data);
-void	remove_newline_str(char *str);
+
 int		absolute(int number);
+int		ternary(int a, int b, int result_a, int result_b);
+void	bresenham(mlx_image_t *the_map, t_bresenham *bres);
+void	bresenham_input(mlx_image_t *the_map,
+			t_map *map_data, int direction, int i);
+void	draw_grid(mlx_image_t *the_map, t_map *map_data);
+
+void	remove_newline_str(char *str);
+char	*join_str(char *s1, char *s2);
+int		map_to_str(int fd, char **map);
+
+void	errno_error(void);
+void	error(char *msg);
+void	free_all(t_map *map_data);
+char	*free_2d_array(char **array_2d);
+
+double	degree_to_rad(double degree);
 int		calc_map_length(t_map *map_data);
 int		calc_map_width(t_map *map_data);
+int		calc_space_x(t_map *map_data);
+int		calc_space_y(t_map *map_data);
+
+int		find_smallest_x(t_map *map_data);
+int		find_smallest_y(t_map *map_data);
+int		find_biggest_x(t_map *map_data);
+int		find_biggest_y(t_map *map_data);
 
 #endif

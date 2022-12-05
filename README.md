@@ -1,34 +1,18 @@
 ⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮  
 ⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰  
 ∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷  
-     wireframe model landscape in progress  
+               wireframe models              
 ∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷∷  
 ⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰⋰  
 ⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮⋮  
-  
-     👩🏻‍🎨 👩🏻‍💻 🕸 🏸 🥅 🚧 🏗  
 
+![Alt text](Pictures/fdf1.png "fdf1")
 
-![Alt text](fdf.jpeg "not mine")
+![Alt text](Pictures/fdf2.png "fdf2")
 
-## STAPPENPLAN:  
-- miniLibX clonen en werkend krijgen  
-- input parsen  
-- miniLibX onderzoeken (sparksessie?)  
-- https://www.khanacademy.org/computing/computer-programming/programming-games-visualizations/programming-3d-shapes/a/creating-3d-shapes  
-- describing 3D shapes  
-- drawing 3D shapes  
-- rotating 3D shapes  
-- https://github.com/VBrazhnik/FdF/wiki 
-- https://git.42l.fr/Fabien/fdf 
-- isometric transformations uitzoeken  
-- sin tan cos uitzoeken  
-- drawing a line uitzoeken 
-- raster tekenen  
-- data punten draaien  
-- code slayen  
-  
-### Opdracht:  
+![Alt text](Pictures/fdf3.png "fdf3")
+ 
+### Subject:  
 - Your program has to display the image in a window.  
 - The management of your window must remain smooth  
 (changing to another window, minimizing, and so forth).  
@@ -37,24 +21,6 @@
 and quit the program in a clean way.  
   
   
-  
-- struct met x, y, z  
-- voor elk data punt een struct aanmaken  
-- elk struct in een array zetten  
-- OF: map lezen als string, splitten op spatie  
-- x = hoeveelste "woord" per lijn  
-- y = hoeveelste rij = \n tellen  
-- z = inhoud van nummer  
-  
-
-
-## TO DO:  
-- make edit_data_points universal for every map (space between data points)  
-- centering grid in middle of image  
-- wrapper for put_pixel  
-- coloring for z-value: https://github.com/codam-coding-college/MLX42/wiki/Colors
-- translation of image (hook)  
-
 # Facts  
 Isometric projection is a method for visually representing three-dimensional  
 objects in two dimensions in technical and engineering drawings. It is an   
@@ -68,48 +34,16 @@ Representative Scale (RF) = iso length / true length
 RF = cos(45)/cos(30)  
 So, iso lengths = 0.82 x true lengths  
 
+# Math 
+  𝑥′=𝑥cos(𝜃)−𝑦sin(𝜃)  
+  𝑦′=𝑥sin(𝜃)+𝑦cos(𝜃)
 ![Alt text](rotation_formulas.png "math")
 
-#### OLD MATH:
-int	i;  
-int old_x;  
-int old_y;  
-int	z;  
-double degree;  
-  
-i = 0;  
-degree = 45.0;  
-add_spacing(map_data);  
-while (i < map_data->amount_of_points)   
-{   
-     map_data->data_points[i].x *= 10;  
-     map_data->data_points[i].y *= 10;  
-     old_x = map_data->data_points[i].x;  
-     old_y = map_data->data_points[i].y;  
-     z = map_data->data_points[i].z;  
-     map_data->data_points[i].x = ((old_x - old_y) * cos(rad))* 10;  
-     map_data->data_points[i].y = (-z + (old_x + old_y) * sin(rad)) * 10;  
-  
-     // OF:  
-     // map_data->data_points[i].x = ((old_x * cos(rad)) - (old_y * sin(rad))) * 10;  
-     // map_data->data_points[i].y = (-z + (old_x * sin(rad)) + (old_y * cos(rad))) * 10;  
-  
-     // OF:  
-     // map_data->data_points[i].x = ((old_x - old_y) * cos(rad))* 10;  
-     // map_data->data_points[i].y = ((old_x * sin(rad)) + (old_y * cos(rad)));  
-     // map_data->data_points[i].y = ((map_data->data_points[i].y * cos(rad)) - (z * sin(rad)))* 10;  
-     i++;  
-}  
-  
-# continue:  
-https://www.youtube.com/watch?v=vlZFSzCIwoc  
-https://www.youtube.com/watch?v=RGB-wlatStc  
-https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm  
-
-
-1. Translating the grid such that the origin is in the center of the grid.  
-2. Scaling the grid to match the sprite size.  
-3. Rotating the grid around the vertical axis by 45 degrees.  
+# Code 
+1. Adding spaces between data points  
+2. Rotating the grid around the z-axis by 45 degrees. 
+3. Rotating the grid around the vertical axis by 45 degrees. 
+4. Centering the map  
   
   𝑥′=𝑥cos(𝜃)−𝑦sin(𝜃)  
   𝑦′=𝑥sin(𝜃)+𝑦cos(𝜃)  

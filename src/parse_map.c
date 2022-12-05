@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/10 12:11:14 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/12/01 14:55:46 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/02 12:04:35 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,8 @@ int	open_map(char **argv)
 
 	map_fd = open(argv[1], O_RDONLY);
 	if (!map_fd || map_fd < 0)
-	{
-		perror("Error opening map");
-		exit(EXIT_FAILURE);
-	}
+		error("Error opening map");
 	return (map_fd);
-}
-
-char	*free_2d_array(char **array_2d)
-{
-	size_t	i;
-
-	i = 0;
-	while (array_2d[i])
-	{
-		free(array_2d[i]);
-		i++;
-	}
-	free(array_2d);
-	return (NULL);
 }
 
 int	count_rows(char *str)
@@ -46,10 +29,7 @@ int	count_rows(char *str)
 
 	map_split_on_newline = ft_split(str, '\n');
 	if (!map_split_on_newline)
-	{
-		perror("Error splitting str on newline\n");
-		exit(EXIT_FAILURE);
-	}
+		error("Error splitting str on newline\n");
 	rows = 0;
 	while (map_split_on_newline[rows])
 		rows++;
@@ -80,12 +60,15 @@ void	fill_data_points(t_map *map_data)
 	i = 0;
 	while (i < map_data->amount_of_points)
 	{
+		map_data->int_array[i] = ft_atoi(map_data->str_split[i]);
+		i++;
+	}
+	i = 0;
+	while (i < map_data->amount_of_points)
+	{
 		map_data->data_points[i].x = i % map_data->columns;
-		printf("x = %i\t", map_data->data_points[i].x);
 		map_data->data_points[i].y = i / map_data->columns;
-		printf("y = %i\t", map_data->data_points[i].y);
 		map_data->data_points[i].z = map_data->int_array[i];
-		printf("z = %i\t\n", map_data->data_points[i].z);
 		i++;
 	}
 }
@@ -94,7 +77,6 @@ void	parse_map(char **argv, t_map *map_data)
 {
 	int		map_fd;
 	char	*str;
-	int		i;
 
 	map_fd = open_map(argv);
 	map_to_str(map_fd, &str);
@@ -105,22 +87,10 @@ void	parse_map(char **argv, t_map *map_data)
 	map_data->data_points
 		= malloc(map_data->amount_of_points * sizeof(t_data_point));
 	if (!map_data->data_points)
-	{
-		perror("Error mallocing data_points");
-		exit(EXIT_FAILURE);
-	}
-	printf("map_data->rows = %d\n", map_data->rows);
-	printf("map_data->columns = %d\n", map_data->columns);
-	printf("map_data->amount_of_points = %d\n", map_data->amount_of_points);
+		error("Error mallocing data_points");
 	remove_newline_str(str);
 	map_data->str_split = ft_split(str, ' ');
 	map_data->int_array = malloc(map_data->amount_of_points * sizeof(int));
-	i = 0;
-	while (i < map_data->amount_of_points)
-	{
-		map_data->int_array[i] = ft_atoi(map_data->str_split[i]);
-		i++;
-	}
 	fill_data_points(map_data);
 	free(str);
 	close(map_fd);

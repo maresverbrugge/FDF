@@ -6,7 +6,7 @@
 #    By: mverbrug <mverbrug@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/11/08 14:19:06 by mverbrug      #+#    #+#                  #
-#    Updated: 2022/11/28 14:55:17 by mverbrug      ########   odam.nl          #
+#    Updated: 2022/12/02 12:02:28 by mverbrug      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ HEADER 	=	fdf.h
 LIBFT 	=	libft/libft.a
 PRINTF	=	printf/printf.a
 MLX		=	MLX42/libmlx42.a
-SANI	=	-g -fsanitize=address # $(SANI)
+SANI	=	-g -fsanitize=address # add $(SANI) when adding flags
 FLAGS 	=	-Wall -Wextra -Werror -g
 FLAGS_M	=	-I include -lglfw3 -framework Cocoa \
 				-framework OpenGL -framework IOKit
@@ -30,7 +30,10 @@ SRC		=	main.c			\
 			parse_map.c		\
 			read_map.c		\
 			edit_data.c		\
-			draw_map.c
+			draw_map.c		\
+			quick_maths.c	\
+			error_handle.c	\
+			very_quick_maths.c
 
 # OBJ = .o files
 OBJ_DIR	=	./obj
@@ -47,8 +50,8 @@ W 		= 	\x1b[0m
 # "all" builds executable, should recompile only the updated source files
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(HEADER) $(LIBFT) $(PRINTF) $(MLX) 
-			@$(CC) $(OBJ) -I$(HEADER) $(LIBFT) $(PRINTF) $(MLX) $(FLAGS_M) $(SANI) -o$@
+$(NAME):	$(OBJ) $(HEADER) $(LIBFT) $(PRINTF) $(MLX)
+			@$(CC) $(OBJ) -I$(HEADER) $(LIBFT) $(PRINTF) $(MLX) $(FLAGS_M) -o$@
 			@echo "$(Y)Just made... "
 			@echo "\n$(Y)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$(W)\n"
 			@echo "            $(Y)$@ $(G)$@ $(B)$@ $(P)$@ $(R)$@!"
@@ -76,7 +79,7 @@ clean:
 			@echo "\n$(R)$@ $(W)object files and obj directory"
 			@${RM} -r $(OBJ_DIR)
 
-# fclean deletes temporary/object files and executable 	@$(MAKE) fclean -C MLX42
+# fclean deletes temporary/object files and executable
 fclean: 	clean
 			@$(MAKE) fclean -C libft
 			@$(MAKE) fclean -C printf
