@@ -37,7 +37,6 @@ So, iso lengths = 0.82 x true lengths
 # Math 
   𝑥′=𝑥cos(𝜃)−𝑦sin(𝜃)  
   𝑦′=𝑥sin(𝜃)+𝑦cos(𝜃)
-![Alt text](rotation_formulas.png "math")
 
 # Code 
 1. Adding spaces between data points  
