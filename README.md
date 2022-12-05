@@ -43,5 +43,3 @@ So, iso lengths = 0.82 x true lengths
 3. Rotating the grid around the vertical axis by 45 degrees. 
 4. Centering the map  
   
-  𝑥′=𝑥cos(𝜃)−𝑦sin(𝜃)  
-  𝑦′=𝑥sin(𝜃)+𝑦cos(𝜃)  
