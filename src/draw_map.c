@@ -6,7 +6,7 @@
 /*   By: mverbrug <mverbrug@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/11/17 18:06:33 by mverbrug      #+#    #+#                 */
-/*   Updated: 2022/12/05 12:53:05 by mverbrug      ########   odam.nl         */
+/*   Updated: 2022/12/05 12:56:46 by mverbrug      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	bresenham(mlx_image_t *the_map, t_bresenham *bres)
 	{
 		if (!(bres->start_x < 0 || bres->start_x >= MAP_LENGTH
 				|| bres->start_y < 0 || bres->start_y >= MAP_WIDTH))
-			mlx_put_pixel(the_map, bres->start_x, bres->start_y, 0x9933ffFF);
+			mlx_put_pixel(the_map, bres->start_x, bres->start_y, 0xffcc00FF);
 		if (bres->start_x == bres->end_x && bres->start_y == bres->end_y)
 			break ;
 		bres->error2 = 2 * bres->error;
