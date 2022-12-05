@@ -12,7 +12,7 @@
 
 ![Alt text](Pictures/fdf3.png "fdf3")
  
-### Subject:  
+# Subject 
 - Your program has to display the image in a window.  
 - The management of your window must remain smooth  
 (changing to another window, minimizing, and so forth).  
@@ -21,7 +21,7 @@
 and quit the program in a clean way.  
   
   
-# Facts  
+# Math 
 Isometric projection is a method for visually representing three-dimensional  
 objects in two dimensions in technical and engineering drawings. It is an   
 axonometric projection in which the three coordinate axes appear equally   
@@ -34,7 +34,6 @@ Representative Scale (RF) = iso length / true length
 RF = cos(45)/cos(30)  
 So, iso lengths = 0.82 x true lengths  
 
-# Math 
   𝑥′=𝑥cos(𝜃)−𝑦sin(𝜃)  
   𝑦′=𝑥sin(𝜃)+𝑦cos(𝜃)
 
